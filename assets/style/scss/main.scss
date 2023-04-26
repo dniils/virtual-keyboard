@@ -1,0 +1,159 @@
+@import "./variables", "./typography";
+
+@mixin hover-and-active {
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    filter: invert(100%) saturate(200%);
+  }
+
+  &:active {
+    border-radius: 20px;
+    filter: invert(100%) saturate(1000%);
+  }
+}
+
+@mixin key-dark {
+  font-weight: 600;
+  color: var(--color-3);
+  background-color: var(--color-4);
+  border-bottom: 1px solid #2d3e5e;
+  @include hover-and-active;
+}
+
+@mixin key-green {
+  font-weight: 600;
+  background-color: var(--color-3);
+  border-bottom: 1px solid #6cb8a9;
+  @include hover-and-active;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.keyboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.keyboard-textarea {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.keyboard {
+  padding: 10px;
+  background-color: var(--color-1);
+  border-radius: 10px;
+  border: 3px solid #60ab9c;
+  user-select: none;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+
+    .keyboard__key:last-child {
+      margin: 0;
+    }
+  }
+
+  &__key {
+    font-weight: 400;
+    margin-right: 3px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-2);
+    border-radius: 3px;
+    border-bottom: 1px solid mintcream;
+    overflow: hidden;
+
+    @include hover-and-active;
+
+    &.backspace {
+      justify-content: flex-end;
+      padding-right: 10px;
+    }
+  }
+
+  .backspace,
+  .tab,
+  .delete,
+  .caps,
+  .shift-left,
+  .shift-right,
+  .control-left,
+  .control-right,
+  .win,
+  .alt-left,
+  .alt-right,
+  .blank {
+    @include key-dark();
+  }
+
+  .enter,
+  .arrow-up,
+  .arrow-left,
+  .arrow-right,
+  .arrow-down {
+    @include key-green();
+  }
+
+  .tab,
+  .caps,
+  .shift-left {
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
+
+  .backspace,
+  .enter,
+  .shift-right {
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+
+  .backspace {
+    width: 103px;
+  }
+
+  .tab {
+    width: 60px;
+  }
+
+  .caps {
+    width: 70px;
+  }
+
+  .enter {
+    width: 116px;
+  }
+
+  .shift-left,
+  .shift-right {
+    width: 93px;
+  }
+
+  .space {
+    width: 308px;
+  }
+
+  .control-right {
+    width: 50px;
+  }
+}

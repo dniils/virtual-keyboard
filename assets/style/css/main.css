@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600&display=swap");
+:root {
+  --color-1: #b6d2d4;
+  --color-2: #f3f5d6;
+  --color-3: #60ab9c;
+  --color-4: #2f394b;
+  --color-5: #70ff86;
+  --color-6: #fff;
+}
+
+:root {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.keyboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.keyboard-textarea {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.keyboard {
+  padding: 10px;
+  background-color: var(--color-1);
+  border-radius: 10px;
+  border: 3px solid #60ab9c;
+  user-select: none;
+}
+.keyboard__row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.keyboard__row .keyboard__key:last-child {
+  margin: 0;
+}
+.keyboard__key {
+  font-weight: 400;
+  margin-right: 3px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-2);
+  border-radius: 3px;
+  border-bottom: 1px solid mintcream;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+.keyboard__key:hover {
+  cursor: pointer;
+  filter: invert(100%) saturate(200%);
+}
+.keyboard__key:active {
+  border-radius: 20px;
+  filter: invert(100%) saturate(1000%);
+}
+.keyboard__key.backspace {
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+.keyboard .backspace,
+.keyboard .tab,
+.keyboard .delete,
+.keyboard .caps,
+.keyboard .shift-left,
+.keyboard .shift-right,
+.keyboard .control-left,
+.keyboard .control-right,
+.keyboard .win,
+.keyboard .alt-left,
+.keyboard .alt-right,
+.keyboard .blank {
+  font-weight: 600;
+  color: var(--color-3);
+  background-color: var(--color-4);
+  border-bottom: 1px solid #2d3e5e;
+  transition: all 0.2s ease-in-out;
+}
+.keyboard .backspace:hover,
+.keyboard .tab:hover,
+.keyboard .delete:hover,
+.keyboard .caps:hover,
+.keyboard .shift-left:hover,
+.keyboard .shift-right:hover,
+.keyboard .control-left:hover,
+.keyboard .control-right:hover,
+.keyboard .win:hover,
+.keyboard .alt-left:hover,
+.keyboard .alt-right:hover,
+.keyboard .blank:hover {
+  cursor: pointer;
+  filter: invert(100%) saturate(200%);
+}
+.keyboard .backspace:active,
+.keyboard .tab:active,
+.keyboard .delete:active,
+.keyboard .caps:active,
+.keyboard .shift-left:active,
+.keyboard .shift-right:active,
+.keyboard .control-left:active,
+.keyboard .control-right:active,
+.keyboard .win:active,
+.keyboard .alt-left:active,
+.keyboard .alt-right:active,
+.keyboard .blank:active {
+  border-radius: 20px;
+  filter: invert(100%) saturate(1000%);
+}
+.keyboard .enter,
+.keyboard .arrow-up,
+.keyboard .arrow-left,
+.keyboard .arrow-right,
+.keyboard .arrow-down {
+  font-weight: 600;
+  background-color: var(--color-3);
+  border-bottom: 1px solid #6cb8a9;
+  transition: all 0.2s ease-in-out;
+}
+.keyboard .enter:hover,
+.keyboard .arrow-up:hover,
+.keyboard .arrow-left:hover,
+.keyboard .arrow-right:hover,
+.keyboard .arrow-down:hover {
+  cursor: pointer;
+  filter: invert(100%) saturate(200%);
+}
+.keyboard .enter:active,
+.keyboard .arrow-up:active,
+.keyboard .arrow-left:active,
+.keyboard .arrow-right:active,
+.keyboard .arrow-down:active {
+  border-radius: 20px;
+  filter: invert(100%) saturate(1000%);
+}
+.keyboard .tab,
+.keyboard .caps,
+.keyboard .shift-left {
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.keyboard .backspace,
+.keyboard .enter,
+.keyboard .shift-right {
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+.keyboard .backspace {
+  width: 103px;
+}
+.keyboard .tab {
+  width: 60px;
+}
+.keyboard .caps {
+  width: 70px;
+}
+.keyboard .enter {
+  width: 116px;
+}
+.keyboard .shift-left,
+.keyboard .shift-right {
+  width: 93px;
+}
+.keyboard .space {
+  width: 308px;
+}
+.keyboard .control-right {
+  width: 50px;
+}
+
+/*# sourceMappingURL=main.css.map */
