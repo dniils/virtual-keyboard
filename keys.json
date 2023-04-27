@@ -1,0 +1,124 @@
+{
+  "0": {
+    "backtick": {
+      "en": "`",
+      "en-shift": "~",
+      "ru": "ё",
+      "ru-shift": "Ё"
+    },
+    "digit-1": {
+      "en": "1",
+      "en-shift": "!",
+      "ru": "1",
+      "ru-shift": "!"
+    },
+    "digit-2": {
+      "en": "2",
+      "en-shift": "@",
+      "ru": "2",
+      "ru-shift": "\""
+    },
+    "digit-3": {
+      "en": "3",
+      "en-shift": "#",
+      "ru": "3",
+      "ru-shift": "№"
+    },
+    "digit-4": {
+      "en": "4",
+      "en-shift": "$",
+      "ru": "4",
+      "ru-shift": ";"
+    },
+    "digit-5": {
+      "en": "5",
+      "en-shift": "%",
+      "ru": "5",
+      "ru-shift": "%"
+    },
+    "digit-6": {
+      "en": "6",
+      "en-shift": "^",
+      "ru": "6",
+      "ru-shift": ":"
+    },
+    "digit-7": {
+      "en": "7",
+      "en-shift": "&",
+      "ru": "7",
+      "ru-shift": "?"
+    },
+    "digit-8": {
+      "en": "8",
+      "en-shift": "*",
+      "ru": "8",
+      "ru-shift": "*"
+    },
+    "digit-9": {
+      "en": "9",
+      "en-shift": "(",
+      "ru": "9",
+      "ru-shift": "("
+    },
+    "digit-0": {
+      "en": "0",
+      "en-shift": ")",
+      "ru": "0",
+      "ru-shift": ")"
+    },
+    "minus": {
+      "en": "-",
+      "en-shift": "_",
+      "ru": "-",
+      "ru-shift": "_"
+    },
+    "equal": {
+      "en": "=",
+      "en-shift": "+",
+      "ru": "=",
+      "ru-shift": "+"
+    },
+    "backspace": {
+      "en": "Backspace",
+      "en-shift": "Backspace",
+      "ru": "Backspace",
+      "ru-shift": "Backspace"
+    }
+  },
+  "1": {
+    "tab": {
+      "en": "Tab",
+      "en-shift": "Tab",
+      "ru": "Tab",
+      "ru-shift": "Tab"
+    },
+    "q": {
+      "en": "q",
+      "en-shift": "Q",
+      "ru": "й",
+      "ru-shift": "Й"
+    },
+    "w": {
+      "en": "w",
+      "en-shift": "W",
+      "ru": "ц",
+      "ru-shift": "Ц"
+    },
+    "e": {
+      "en": "e",
+      "en-shift": "E",
+      "ru": "у",
+      "ru-shift": "У"
+    }
+  },
+  "2": {},
+  "3": {
+    "shift-left": {
+      "en": "Shift",
+      "en-shift": "Shift",
+      "ru": "Shift",
+      "ru-shift": "Shift"
+    }
+  },
+  "4": {}
+}

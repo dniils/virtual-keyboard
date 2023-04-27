@@ -1,4 +1,5 @@
-// const page = document.querySelector('.page');
-// page.addEventListener('keydown', (e) => {
-//   console.log(e.key) 
-// })
+/* eslint linebreak-style: ["error", "windows"] */
+import { renderKeyboard } from './renderKeyboard.js';
+
+let currentState = 'en';
+renderKeyboard(currentState);
