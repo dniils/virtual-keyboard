@@ -1,16 +1,20 @@
-@import "./variables", "./typography";
+@import './variables', './typography';
 
 @mixin hover-and-active {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     cursor: pointer;
-    filter: invert(100%) saturate(200%);
+    color: var(--color-7);
+    background-color: var(--color-8);
+    border-bottom: 3px solid var(--color-9);
+    box-shadow: inset 0 -3px 3px 0px transparent;
   }
 
   &:active {
-    border-radius: 20px;
-    filter: invert(100%) saturate(1000%);
+    border-bottom: 1px solid transparent;
+    transform: translateY(2px);
+    font-weight: 700;
   }
 }
 
@@ -18,14 +22,16 @@
   font-weight: 600;
   color: var(--color-3);
   background-color: var(--color-4);
-  border-bottom: 1px solid #2d3e5e;
+  border-bottom: 3px solid var(--color-10);
+  box-shadow: inset 0 -3px 3px 0px var(--color-11);
   @include hover-and-active;
 }
 
 @mixin key-green {
   font-weight: 600;
   background-color: var(--color-3);
-  border-bottom: 1px solid #6cb8a9;
+  border-bottom: 3px solid var(--color-12);
+  box-shadow: inset 0 -3px 3px 0px var(--color-13);
   @include hover-and-active;
 }
 
@@ -49,21 +55,27 @@
 
 .keyboard-textarea {
   margin-bottom: 20px;
-  border-radius: 10px;
   padding: 5px 10px;
+  border-radius: 10px;
+  border-bottom-right-radius: 0;
 }
 
 .keyboard {
   padding: 10px;
   background-color: var(--color-1);
   border-radius: 10px;
-  border: 3px solid #60ab9c;
+  border: 3px solid var(--color-3);
   user-select: none;
 
   &__row {
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
+
+    &:first-child {
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
 
     .keyboard__key:last-child {
       margin: 0;
@@ -80,80 +92,127 @@
     justify-content: center;
     background-color: var(--color-2);
     border-radius: 3px;
-    border-bottom: 1px solid mintcream;
+    border-bottom: 3px solid var(--color-14);
+    box-shadow: inset 0 -1px 3px 0px var(--color-15);
     overflow: hidden;
+
+    &_active {
+      color: var(--color-7) !important;
+      background-color: var(--color-8) !important;
+      box-shadow: inset 0 -3px 3px 0px transparent !important;
+      border-bottom: 1px solid transparent !important;
+      transform: translateY(2px) !important;
+      font-weight: 900 !important;
+    }
 
     @include hover-and-active;
 
-    &.backspace {
+    &.Backspace {
       justify-content: flex-end;
       padding-right: 10px;
     }
   }
 
-  .backspace,
-  .tab,
-  .delete,
-  .caps,
-  .shift-left,
-  .shift-right,
-  .control-left,
-  .control-right,
-  .win,
-  .alt-left,
-  .alt-right,
-  .blank {
+  .Backspace,
+  .Tab,
+  .Delete,
+  .CapsLock,
+  .ShiftLeft,
+  .ShiftRight,
+  .ControlLeft,
+  .ControlRight,
+  .MetaLeft,
+  .AltRight,
+  .AltLeft,
+  .Escape,
+  .Blank5,
+  .Blank6,
+  .Blank7,
+  .Blank8 {
     @include key-dark();
   }
 
-  .enter,
-  .arrow-up,
-  .arrow-left,
-  .arrow-right,
-  .arrow-down {
+  .Enter,
+  .ArrowUp,
+  .ArrowDown,
+  .ArrowRight,
+  .ArrowLeft,
+  .Space {
     @include key-green();
   }
 
-  .tab,
-  .caps,
-  .shift-left {
+  .Tab,
+  .CapsLock,
+  .ShiftLeft {
     justify-content: flex-start;
     padding-left: 10px;
   }
 
-  .backspace,
-  .enter,
-  .shift-right {
+  .Backspace,
+  .Enter,
+  .ShiftRight {
     justify-content: flex-end;
     padding-right: 10px;
   }
 
-  .backspace {
+  .Backspace {
     width: 103px;
   }
 
-  .tab {
+  .Tab {
     width: 60px;
   }
 
-  .caps {
+  .Backslash {
+    width: 83px;
+  }
+
+  .CapsLock {
     width: 70px;
   }
 
-  .enter {
+  .Enter {
     width: 116px;
   }
 
-  .shift-left,
-  .shift-right {
+  .ShiftLeft,
+  .ShiftRight {
     width: 93px;
   }
 
-  .space {
+  .Space {
     width: 308px;
   }
 
-  .control-right {
+  .ControlRight {
     width: 50px;
+  }
+
+  // .Escape,
+  // .Delete {
+  //   height: 30px;
+  //   // width: 50px;
+  // }
+
+  // .Blank1,
+  // .Blank2,
+  // .Blank3,
+  // .Blank4,
+  // .Blank5,
+  // .Blank6,
+  // .Blank7,
+  // .Blank8,
+  // .Blank9,
+  // .Blank10,
+  // .Blank11,
+  // .Blank12 {
+  //   height: 30px;
+  // }
+
+  .Escape,
+  .Blank4,
+  .Blank8,
+  .Blank12 {
+    margin-right: 18px;
   }
 }

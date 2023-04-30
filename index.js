@@ -1,5 +1,5 @@
-/* eslint linebreak-style: ["error", "windows"] */
-import { renderKeyboard } from './renderKeyboard.js';
+/* eslint linebreak-style: ['error', 'windows'] */
+import { renderKeyboard, renderKeyboardKeys } from './renderKeyboard.js';
 
-let currentState = 'en';
-renderKeyboard(currentState);
+renderKeyboard();
+renderKeyboardKeys('en');
