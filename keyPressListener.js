@@ -166,7 +166,6 @@ function listenToKeysUpsAndDowns() {
       if (e.code === keys[i].classList[1] && e.code !== 'CapsLock') {
         if (down) keysNodeList[i].classList.add('keyboard__key_active');
         else keysNodeList[i].classList.remove('keyboard__key_active');
-        // keysNodeList[i].classList.toggle('keyboard__key_active');
       }
     }
   }
@@ -182,9 +181,6 @@ function listenToKeysUpsAndDowns() {
       case 'Backspace':
         textArea.value = textArea.value.slice(0, textArea.value.length - 1);
         break;
-      // case 'Delete':
-      //
-      //   break;
       case 'Enter':
         textArea.value += '\n';
         break;
