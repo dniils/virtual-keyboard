@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ['error', 'windows'] */
 import * as keysJSON from './keys.json' assert { type: 'json' };
 import {
   listenToKeysUpsAndDowns,
