@@ -62,6 +62,7 @@
 
 .keyboard {
   padding: 10px;
+  margin-bottom: 20px;
   background-color: var(--color-1);
   border-radius: 10px;
   border: 3px solid var(--color-3);
@@ -214,5 +215,14 @@
   .Blank8,
   .Blank12 {
     margin-right: 18px;
+  }
+}
+
+.keyboard-info {
+  color: var(--color-4);
+
+  &__system {
+  }
+  &__language {
   }
 }

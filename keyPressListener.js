@@ -1,8 +1,7 @@
-/* eslint linebreak-style: ['error', 'windows'] */
-// import { innerTextToShift, enableCapsLock } from './shiftModeHandler.js';
 import * as keysJSON from './keys.json' assert { type: 'json' };
 
 let currentMode = 'en';
+let str;
 const keysData = keysJSON.default;
 let keysDataArr = [];
 
@@ -51,24 +50,42 @@ const ruKeysToCaps = [
   'Period',
 ];
 
-function toggleShiftMode(m) {
-  if (m === 'en') {
-    currentMode = 'en-shift';
-    return 'en-shift';
+function toggleShiftMode(mode) {
+  switch (mode) {
+    case 'en':
+      currentMode = 'en-shift';
+      return 'en-shift';
+    case 'en-shift':
+      currentMode = 'en';
+      return 'en';
+    case 'ru':
+      currentMode = 'ru-shift';
+      return 'ru-shift';
+    case 'ru-shift':
+      currentMode = 'ru';
+      return 'ru';
+    default:
+      return '';
   }
-  if (m === 'en-shift') {
-    currentMode = 'en';
-    return 'en';
+}
+
+function toggleLanguage(mode) {
+  switch (mode) {
+    case 'en':
+      currentMode = 'ru';
+      return 'ru';
+    case 'en-shift':
+      currentMode = 'ru-shift';
+      return 'ru-shift';
+    case 'ru':
+      currentMode = 'en';
+      return 'en';
+    case 'ru-shift':
+      currentMode = 'en-shift';
+      return 'en-shift';
+    default:
+      return '';
   }
-  if (m === 'ru') {
-    currentMode = 'ru-shift';
-    return 'ru-shift';
-  }
-  if (m === 'ru-shift') {
-    currentMode = 'ru';
-    return 'ru';
-  }
-  return '';
 }
 
 function activateShift() {
@@ -114,13 +131,31 @@ function activateCaps() {
   capsKey.classList.toggle('keyboard__key_active');
 }
 
+function switchLanguage() {
+  const keyboardKeys = document.querySelectorAll('.keyboard__key');
+
+  toggleLanguage(currentMode);
+
+  keyboardKeys.forEach((key) => {
+    key.innerText = keysDataArr.filter(
+      (arr) => arr[0] === key.classList[1]
+    )[0][1][currentMode];
+  });
+
+  console.log(`mode switched to: ${currentMode}`);
+}
+
 function listenToKeysUpsAndDowns() {
+  const textArea = document.getElementById('text');
   const page = document.querySelector('.page');
   const keysNodeList = document.querySelectorAll('.keyboard__key');
   const keys = Array.from(keysNodeList);
+  const controlLeft = document.querySelector('.keyboard__key.ControlLeft');
+  const controlRight = document.querySelector('.keyboard__key.ControlRight');
+  const altLeft = document.querySelector('.keyboard__key.AltLeft');
+  const altRight = document.querySelector('.keyboard__key.AltRight');
 
   function activateKeyByPress(e, down) {
-    console.log(e.code);
     for (let i = 0; i < keys.length; i += 1) {
       if (e.code === keys[i].classList[1] && e.code !== 'CapsLock') {
         if (down) keysNodeList[i].classList.add('keyboard__key_active');
@@ -130,17 +165,114 @@ function listenToKeysUpsAndDowns() {
     }
   }
 
+  function textIputHandler(str) {
+    switch (str) {
+      case 'Space':
+        textArea.value += ' ';
+        break;
+      case 'Tab':
+        textArea.value += '    ';
+        break;
+      case 'Backspace':
+        textArea.value = textArea.value.slice(0, textArea.value.length - 1);
+        break;
+      // case 'Delete':
+      //   textArea.value = ;
+      //   break;
+      case 'Enter':
+        textArea.value += '\n';
+        break;
+      case 'ArrowLeft':
+        textArea.value += '◄';
+        break;
+      case 'ArrowRight':
+        textArea.value += '►';
+        break;
+      case 'ArrowUp':
+        textArea.value += '▲';
+        break;
+      case 'ArrowDown':
+        textArea.value += '▼';
+        break;
+      case 'Shift':
+      case 'CapsLock':
+      case 'Caps':
+      case 'Alt':
+      case 'Control':
+      case 'Meta':
+      case 'Home':
+      case 'End':
+      case 'PageUp':
+      case 'PageDown':
+      case 'Escape':
+      case 'Esc':
+      case 'Ctrl':
+        textArea.value = textArea.value;
+        break;
+      default:
+        textArea.value += str;
+    }
+  }
+
+  function checkChangeLangCondition() {
+    if (
+      (controlLeft.classList.contains('keyboard__key_active') &&
+        altLeft.classList.contains('keyboard__key_active')) ||
+      (controlLeft.classList.contains('keyboard__key_active') &&
+        altRight.classList.contains('keyboard__key_active')) ||
+      (controlRight.classList.contains('keyboard__key_active') &&
+        altLeft.classList.contains('keyboard__key_active')) ||
+      (controlRight.classList.contains('keyboard__key_active') &&
+        altRight.classList.contains('keyboard__key_active'))
+    ) {
+      return true;
+    } else return false;
+  }
+
   page.addEventListener('keydown', (e) => {
     e.preventDefault();
     activateKeyByPress(e, true);
     if (e.code === 'CapsLock') activateCaps(e);
     if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') activateShift();
+    if (checkChangeLangCondition()) {
+      switchLanguage();
+    }
+
+    textIputHandler(
+      keysDataArr.filter((arr) => arr[0] === e.code)[0][1][currentMode]
+    );
   });
+
   page.addEventListener('keyup', (e) => {
     e.preventDefault();
     activateKeyByPress(e, false);
     if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') activateShift();
   });
+
+  for (let i = 0; i < keysNodeList.length; i += 1) {
+    keysNodeList[i].addEventListener('click', (e) => {
+      switch (e.target.innerText) {
+        case 'Space':
+          str = ' ';
+          break;
+        case 'Caps':
+          str = 'CapsLock';
+          break;
+        case 'Ctrl':
+          str = 'Control';
+          break;
+        case 'Esc':
+          str = 'Escape';
+          break;
+        case 'Del':
+          str = Delete;
+          break;
+        default:
+          str = e.target.innerText;
+      }
+      textIputHandler(str);
+    });
+  }
 }
 
 export { listenToKeysUpsAndDowns, activateShift, activateCaps };

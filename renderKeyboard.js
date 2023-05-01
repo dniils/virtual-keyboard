@@ -1,7 +1,5 @@
 /* eslint linebreak-style: ['error', 'windows'] */
-
 import * as keysJSON from './keys.json' assert { type: 'json' };
-// import { switchToShiftMode } from './shiftModeHandler.js';
 import {
   listenToKeysUpsAndDowns,
   activateShift,
@@ -13,17 +11,31 @@ function renderKeyboard() {
   const keyboardContainer = document.createElement('div');
   const textarea = document.createElement('textarea');
   const keyboard = document.createElement('div');
+  const keyboardInfo = document.createElement('div');
+  const keyboardInfoSystem = document.createElement('span');
+  const keyboardInfoLang = document.createElement('span');
+
+  keyboardInfo.classList.add('keyboard-info');
+  keyboardInfoSystem.classList.add('keyboard-info__system');
+  keyboardInfoLang.classList.add('keyboard-info__language');
+  keyboardInfoSystem.innerHTML = 'Developed in Windows OS | ';
+  keyboardInfoLang.innerHTML = 'Switch language: Control + Alt';
+  keyboardInfo.append(keyboardInfoSystem, keyboardInfoLang);
 
   textarea.classList.add('keyboard-textarea');
+  textarea.setAttribute('id', 'text');
   textarea.setAttribute('name', 'keyboard-text');
   textarea.setAttribute('cols', '90');
-  textarea.setAttribute('rows', '2');
+  textarea.setAttribute('rows', '3');
 
   keyboardContainer.classList.add('keyboard-container');
   keyboard.classList.add('keyboard');
 
   keyboardContainer.append(textarea);
   keyboardContainer.append(keyboard);
+  setTimeout(() => {
+    keyboardContainer.append(keyboardInfo);
+  }, 0);
 
   body.append(keyboardContainer);
 }

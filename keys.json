@@ -437,10 +437,10 @@
       "ru-shift": "Alt"
     },
     "Space": {
-      "en": "space",
-      "en-shift": "space",
-      "ru": "space",
-      "ru-shift": "space"
+      "en": "Space",
+      "en-shift": "Space",
+      "ru": "Space",
+      "ru-shift": "Space"
     },
     "AltRight": {
       "en": "Alt",
