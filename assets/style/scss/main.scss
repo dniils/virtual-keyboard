@@ -1,0 +1,202 @@
+@import './variables', './typography';
+
+@mixin hover-and-active {
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--color-7);
+    background-color: var(--color-8);
+    border-bottom: 3px solid var(--color-9);
+    box-shadow: inset 0 -3px 3px 0px transparent;
+  }
+
+  &:active {
+    border-bottom: 1px solid transparent;
+    transform: translateY(2px);
+    font-weight: 700;
+  }
+}
+
+@mixin key-dark {
+  font-weight: 600;
+  color: var(--color-3);
+  background-color: var(--color-4);
+  border-bottom: 3px solid var(--color-10);
+  box-shadow: inset 0 -3px 3px 0px var(--color-11);
+  @include hover-and-active;
+}
+
+@mixin key-green {
+  font-weight: 600;
+  background-color: var(--color-3);
+  border-bottom: 3px solid var(--color-12);
+  box-shadow: inset 0 -3px 3px 0px var(--color-13);
+  @include hover-and-active;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.keyboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.keyboard-textarea {
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border-bottom-right-radius: 0;
+}
+
+.keyboard {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: var(--color-1);
+  border-radius: 10px;
+  border: 3px solid var(--color-3);
+  user-select: none;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+
+    &:first-child {
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .keyboard__key:last-child {
+      margin: 0;
+    }
+  }
+
+  &__key {
+    font-weight: 400;
+    margin-right: 3px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-2);
+    border-radius: 3px;
+    border-bottom: 3px solid var(--color-14);
+    box-shadow: inset 0 -1px 3px 0px var(--color-15);
+    overflow: hidden;
+
+    &_active {
+      color: var(--color-7) !important;
+      background-color: var(--color-8) !important;
+      box-shadow: inset 0 -3px 3px 0px transparent !important;
+      border-bottom: 1px solid transparent !important;
+      transform: translateY(2px) !important;
+      font-weight: 900 !important;
+    }
+
+    @include hover-and-active;
+
+    &.Backspace {
+      justify-content: flex-end;
+      padding-right: 10px;
+    }
+  }
+
+  .Backspace,
+  .Tab,
+  .Delete,
+  .CapsLock,
+  .ShiftLeft,
+  .ShiftRight,
+  .ControlLeft,
+  .ControlRight,
+  .MetaLeft,
+  .AltRight,
+  .AltLeft,
+  .Escape,
+  .Blank5,
+  .Blank6,
+  .Blank7,
+  .Blank8 {
+    @include key-dark();
+  }
+
+  .Enter,
+  .ArrowUp,
+  .ArrowDown,
+  .ArrowRight,
+  .ArrowLeft,
+  .Space {
+    @include key-green();
+  }
+
+  .Tab,
+  .CapsLock,
+  .ShiftLeft {
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
+
+  .Backspace,
+  .Enter,
+  .ShiftRight {
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+
+  .Backspace {
+    width: 103px;
+  }
+
+  .Tab {
+    width: 60px;
+  }
+
+  .Backslash {
+    width: 83px;
+  }
+
+  .CapsLock {
+    width: 70px;
+  }
+
+  .Enter {
+    width: 116px;
+  }
+
+  .ShiftLeft,
+  .ShiftRight {
+    width: 93px;
+  }
+
+  .Space {
+    width: 308px;
+  }
+
+  .ControlRight {
+    width: 50px;
+  }
+
+  .Escape,
+  .Blank4,
+  .Blank8,
+  .Blank12 {
+    margin-right: 18px;
+  }
+}
+
+.keyboard-info {
+  color: var(--color-4);
+}

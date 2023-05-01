@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600;700&display=swap");
+:root {
+  --color-1: #b6d2d4;
+  --color-2: #f3f5d6;
+  --color-3: #60ab9c;
+  --color-4: #2f394b;
+  --color-5: #70ff86;
+  --color-6: #fff;
+  --color-7: #ff0051;
+  --color-8: #ffbe0a;
+  --color-9: #ff8e00;
+  --color-10: #536483;
+  --color-11: #242b39;
+  --color-12: #68b8a8;
+  --color-13: #5ca395;
+  --color-14: #e5e7c9;
+  --color-15: #ced0b5;
+}
+
+:root {
+  font-family: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.keyboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.keyboard-textarea {
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border-bottom-right-radius: 0;
+}
+
+.keyboard {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: var(--color-1);
+  border-radius: 10px;
+  border: 3px solid var(--color-3);
+  user-select: none;
+}
+.keyboard__row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.keyboard__row:first-child {
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.keyboard__row .keyboard__key:last-child {
+  margin: 0;
+}
+.keyboard__key {
+  font-weight: 400;
+  margin-right: 3px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-2);
+  border-radius: 3px;
+  border-bottom: 3px solid var(--color-14);
+  box-shadow: inset 0 -1px 3px 0px var(--color-15);
+  overflow: hidden;
+  transition: all 0.1s ease-in-out;
+}
+.keyboard__key_active {
+  color: var(--color-7) !important;
+  background-color: var(--color-8) !important;
+  box-shadow: inset 0 -3px 3px 0px transparent !important;
+  border-bottom: 1px solid transparent !important;
+  transform: translateY(2px) !important;
+  font-weight: 900 !important;
+}
+.keyboard__key:hover {
+  cursor: pointer;
+  color: var(--color-7);
+  background-color: var(--color-8);
+  border-bottom: 3px solid var(--color-9);
+  box-shadow: inset 0 -3px 3px 0px transparent;
+}
+.keyboard__key:active {
+  border-bottom: 1px solid transparent;
+  transform: translateY(2px);
+  font-weight: 700;
+}
+.keyboard__key.Backspace {
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+.keyboard .Backspace,
+.keyboard .Tab,
+.keyboard .Delete,
+.keyboard .CapsLock,
+.keyboard .ShiftLeft,
+.keyboard .ShiftRight,
+.keyboard .ControlLeft,
+.keyboard .ControlRight,
+.keyboard .MetaLeft,
+.keyboard .AltRight,
+.keyboard .AltLeft,
+.keyboard .Escape,
+.keyboard .Blank5,
+.keyboard .Blank6,
+.keyboard .Blank7,
+.keyboard .Blank8 {
+  font-weight: 600;
+  color: var(--color-3);
+  background-color: var(--color-4);
+  border-bottom: 3px solid var(--color-10);
+  box-shadow: inset 0 -3px 3px 0px var(--color-11);
+  transition: all 0.1s ease-in-out;
+}
+.keyboard .Backspace:hover,
+.keyboard .Tab:hover,
+.keyboard .Delete:hover,
+.keyboard .CapsLock:hover,
+.keyboard .ShiftLeft:hover,
+.keyboard .ShiftRight:hover,
+.keyboard .ControlLeft:hover,
+.keyboard .ControlRight:hover,
+.keyboard .MetaLeft:hover,
+.keyboard .AltRight:hover,
+.keyboard .AltLeft:hover,
+.keyboard .Escape:hover,
+.keyboard .Blank5:hover,
+.keyboard .Blank6:hover,
+.keyboard .Blank7:hover,
+.keyboard .Blank8:hover {
+  cursor: pointer;
+  color: var(--color-7);
+  background-color: var(--color-8);
+  border-bottom: 3px solid var(--color-9);
+  box-shadow: inset 0 -3px 3px 0px transparent;
+}
+.keyboard .Backspace:active,
+.keyboard .Tab:active,
+.keyboard .Delete:active,
+.keyboard .CapsLock:active,
+.keyboard .ShiftLeft:active,
+.keyboard .ShiftRight:active,
+.keyboard .ControlLeft:active,
+.keyboard .ControlRight:active,
+.keyboard .MetaLeft:active,
+.keyboard .AltRight:active,
+.keyboard .AltLeft:active,
+.keyboard .Escape:active,
+.keyboard .Blank5:active,
+.keyboard .Blank6:active,
+.keyboard .Blank7:active,
+.keyboard .Blank8:active {
+  border-bottom: 1px solid transparent;
+  transform: translateY(2px);
+  font-weight: 700;
+}
+.keyboard .Enter,
+.keyboard .ArrowUp,
+.keyboard .ArrowDown,
+.keyboard .ArrowRight,
+.keyboard .ArrowLeft,
+.keyboard .Space {
+  font-weight: 600;
+  background-color: var(--color-3);
+  border-bottom: 3px solid var(--color-12);
+  box-shadow: inset 0 -3px 3px 0px var(--color-13);
+  transition: all 0.1s ease-in-out;
+}
+.keyboard .Enter:hover,
+.keyboard .ArrowUp:hover,
+.keyboard .ArrowDown:hover,
+.keyboard .ArrowRight:hover,
+.keyboard .ArrowLeft:hover,
+.keyboard .Space:hover {
+  cursor: pointer;
+  color: var(--color-7);
+  background-color: var(--color-8);
+  border-bottom: 3px solid var(--color-9);
+  box-shadow: inset 0 -3px 3px 0px transparent;
+}
+.keyboard .Enter:active,
+.keyboard .ArrowUp:active,
+.keyboard .ArrowDown:active,
+.keyboard .ArrowRight:active,
+.keyboard .ArrowLeft:active,
+.keyboard .Space:active {
+  border-bottom: 1px solid transparent;
+  transform: translateY(2px);
+  font-weight: 700;
+}
+.keyboard .Tab,
+.keyboard .CapsLock,
+.keyboard .ShiftLeft {
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.keyboard .Backspace,
+.keyboard .Enter,
+.keyboard .ShiftRight {
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+.keyboard .Backspace {
+  width: 103px;
+}
+.keyboard .Tab {
+  width: 60px;
+}
+.keyboard .Backslash {
+  width: 83px;
+}
+.keyboard .CapsLock {
+  width: 70px;
+}
+.keyboard .Enter {
+  width: 116px;
+}
+.keyboard .ShiftLeft,
+.keyboard .ShiftRight {
+  width: 93px;
+}
+.keyboard .Space {
+  width: 308px;
+}
+.keyboard .ControlRight {
+  width: 50px;
+}
+.keyboard .Escape,
+.keyboard .Blank4,
+.keyboard .Blank8,
+.keyboard .Blank12 {
+  margin-right: 18px;
+}
+
+.keyboard-info {
+  color: var(--color-4);
+}
+
+/*# sourceMappingURL=main.css.map */
