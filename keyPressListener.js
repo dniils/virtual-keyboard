@@ -1,6 +1,8 @@
 import * as keysJSON from './keys.json' assert { type: 'json' };
 
-let currentMode = 'en';
+let currentMode;
+if (!localStorage.lang) currentMode = 'en';
+else currentMode = localStorage.getItem('lang');
 let str;
 const keysData = keysJSON.default;
 let keysDataArr = [];
@@ -73,15 +75,19 @@ function toggleLanguage(mode) {
   switch (mode) {
     case 'en':
       currentMode = 'ru';
+      localStorage.setItem('lang', 'ru');
       return 'ru';
     case 'en-shift':
       currentMode = 'ru-shift';
+      localStorage.setItem('lang', 'ru');
       return 'ru-shift';
     case 'ru':
       currentMode = 'en';
+      localStorage.setItem('lang', 'en');
       return 'en';
     case 'ru-shift':
       currentMode = 'en-shift';
+      localStorage.setItem('lang', 'en');
       return 'en-shift';
     default:
       return '';
@@ -104,7 +110,7 @@ function activateCaps() {
   const capsKey = document.querySelector('.keyboard__key.CapsLock');
 
   let keyboardKeys;
-  if (currentMode === 'en') {
+  if (currentMode === 'en' || currentMode === 'en-shift') {
     keyboardKeys = Array.from(
       document.querySelectorAll('.keyboard__key')
     ).filter((key) => keysToCaps.includes(key.classList[1]));
@@ -177,7 +183,7 @@ function listenToKeysUpsAndDowns() {
         textArea.value = textArea.value.slice(0, textArea.value.length - 1);
         break;
       // case 'Delete':
-      //   textArea.value = ;
+      //
       //   break;
       case 'Enter':
         textArea.value += '\n';
@@ -200,6 +206,9 @@ function listenToKeysUpsAndDowns() {
       case 'Alt':
       case 'Control':
       case 'Meta':
+      case 'Win':
+      case 'Del':
+      case 'Delete':
       case 'Home':
       case 'End':
       case 'PageUp':
@@ -265,7 +274,7 @@ function listenToKeysUpsAndDowns() {
           str = 'Escape';
           break;
         case 'Del':
-          str = Delete;
+          str = 'Delete';
           break;
         default:
           str = e.target.innerText;

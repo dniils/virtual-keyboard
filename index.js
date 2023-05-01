@@ -2,4 +2,5 @@
 import { renderKeyboard, renderKeyboardKeys } from './renderKeyboard.js';
 
 renderKeyboard();
-renderKeyboardKeys('en');
+if (!localStorage.lang) renderKeyboardKeys('en');
+else renderKeyboardKeys(localStorage.getItem('lang'));

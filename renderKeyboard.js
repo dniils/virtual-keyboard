@@ -41,6 +41,9 @@ function renderKeyboard() {
 }
 
 function renderKeyboardKeys(state) {
+  if (!localStorage.lang) localStorage.setItem('lang', state);
+  else state = localStorage.getItem('lang');
+
   const keysData = keysJSON.default;
   const keyboardContainer = document.querySelector('.keyboard-container');
   const keyboard = document.querySelector('.keyboard');
